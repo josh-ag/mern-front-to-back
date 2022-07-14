@@ -24,7 +24,7 @@ const createGoal = AsyncHandler(async (req, res, next) => {
   }
 
   //create new goal
-  let resp = await Goals.create({ goal });
+  let resp = await Goals.create({ user: req.user.id, goal });
 
   res.status(201).json({ message: "New goal created", goal: resp });
 });

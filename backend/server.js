@@ -14,10 +14,11 @@ const app = express();
 //MIDDLEWARES
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(errorHandler);
 
 //ROUTE
 app.use("/api/goals", require("./routes/goalsRoute"));
-app.use(errorHandler);
+app.use("/api/users", require("./routes/userRoute"));
 
 //LISTEN TO SERVER
 app.listen(PORT, () => console.log("Server Now Listening On Port ", PORT));
