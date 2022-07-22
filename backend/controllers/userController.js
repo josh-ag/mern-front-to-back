@@ -10,6 +10,8 @@ const User = require("../models/userModel");
 const registerUser = asyncHandler(async (req, res, next) => {
   const { firstname, lastname, email, username, password } = req.body;
 
+  console.log(req.body);
+
   if (!firstname || !lastname || !email || !username || !password) {
     return res.status(400).json({ message: "Some fields are missing" });
   }
@@ -77,14 +79,24 @@ const loginUser = asyncHandler(async (req, res, next) => {
   });
 });
 
+//@desc - GET USER PROFILE
+//@method - GET
+//@access - PRIVATE
 const getProfile = asyncHandler(async (req, res, next) => {
-  const user = await User.findById(req?.user.id).select("-password");
+  res
+    .status(200)
+    .json({ message: "your now accessing user profile", user: req.user });
+});
 
-  if (!user) {
-    return res.status(400).json({ message: "User not found" });
-  }
+//@desc - UPDATE USER PROFILE
+//@method - PUT
+//@access - PRIVATE
+const updateProfile = asyncHandler(async (req, res, next) => {
+  const update = await User.findOneAndUpdate({ _id: req.user.id }, req.body, {
+    updated: true,
+  }).select("-password");
 
-  res.status(200).json({ message: "your now accessing user profile", user });
+  res.status(201).json({ message: "Changes was applied!", updated: update });
 });
 
 //gen token
@@ -98,4 +110,5 @@ module.exports = {
   registerUser,
   loginUser,
   getProfile,
+  updateProfile,
 };
