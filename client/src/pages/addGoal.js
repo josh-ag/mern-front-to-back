@@ -12,6 +12,7 @@ import { createGoal } from "../features/goals/goalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../features/auth/authSlice";
+import { ArrowBackOutlined } from "@mui/icons-material";
 
 export const AddGoal = () => {
   const [goalData, setGoalData] = useState("");
@@ -39,9 +40,16 @@ export const AddGoal = () => {
   }, [navigate, user, dispatch]);
 
   return (
-    <Container sx={{ mt: 4 }}>
+    <Container sx={{ mt: 2 }}>
       <Grid container sx={{ justifyContent: "center" }}>
         <Grid item xs={12} md={6}>
+          <Button
+            startIcon={<ArrowBackOutlined />}
+            sx={{ my: 2 }}
+            onClick={() => navigate(-1)}
+          >
+            back
+          </Button>
           <Paper sx={{ p: 4 }}>
             <Typography
               variant="h5"

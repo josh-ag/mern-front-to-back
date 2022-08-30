@@ -9,10 +9,11 @@ import {
   Avatar,
   Grid,
   Button,
+  Tooltip,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { AddAPhoto } from "@mui/icons-material";
+import { AddAPhoto, ArrowBackOutlined } from "@mui/icons-material";
 import { useEffect } from "react";
 import {
   getProfile,
@@ -76,9 +77,17 @@ export const ProfileEdit = () => {
   }, [dispatch, navigate]);
 
   return (
-    <Container sx={{ my: 4 }}>
+    <Container sx={{ my: 2 }}>
       <Grid container>
         <Grid item xs={12} sm={12} md={6} sx={{ justifyContent: "center" }}>
+          <Button
+            startIcon={<ArrowBackOutlined />}
+            sx={{ my: 2 }}
+            onClick={() => navigate(-1)}
+          >
+            back
+          </Button>
+
           <Card>
             <CardHeader title="Profile" sx={{ color: "#666", fontSize: 24 }} />
             <CardContent>
@@ -111,7 +120,9 @@ export const ProfileEdit = () => {
                           {profile.username.substr(0, 1).toUpperCase()}
                         </Avatar>
                         <InputLabel htmlFor="profile">
-                          <AddAPhoto color="primary" />
+                          <Tooltip title="Select new profile" arrow>
+                            <AddAPhoto color="primary" />
+                          </Tooltip>
                         </InputLabel>
                         <OutlinedInput
                           id="profile"

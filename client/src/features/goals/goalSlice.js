@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-// import { logout } from "../auth/authSlice";
 import goalServices from "../services/goalServices";
 
 const initialState = {

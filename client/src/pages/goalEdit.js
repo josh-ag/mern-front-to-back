@@ -9,11 +9,11 @@ import {
   TextField,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { logout } from "../features/auth/authSlice";
 import { resetGoal, getGoal, updateGoal } from "../features/goals/goalSlice";
 import { useNavigate, useParams } from "react-router-dom";
+import { ArrowBackOutlined } from "@mui/icons-material";
 
 export const GoalEdit = () => {
   const { goal } = useSelector((state) => state.goals);
@@ -53,9 +53,17 @@ export const GoalEdit = () => {
   }, [id, goal, dispatch, navigate]);
 
   return (
-    <Container sx={{ my: 4 }}>
+    <Container sx={{ my: 2 }}>
       <Grid container>
         <Grid item xs={12} sm={12} md={6} sx={{ justifyContent: "center" }}>
+          <Button
+            startIcon={<ArrowBackOutlined />}
+            sx={{ my: 2 }}
+            onClick={() => navigate(-1)}
+          >
+            back
+          </Button>
+
           <Card>
             <CardHeader
               title="Edit Goal"

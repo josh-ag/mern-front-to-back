@@ -43,10 +43,12 @@ export const Navbar = () => {
                   to="/goal/add"
                   sx={{ color: "#ddd" }}
                   startIcon={<AddCircle />}
+                  size="small"
                 >
                   new goal
                 </Button>
                 <Button
+                  size="small"
                   component={RouterLink}
                   to="/dashboard"
                   variant="contained"
@@ -59,6 +61,7 @@ export const Navbar = () => {
                   onClick={handleLogout}
                   variant="contained"
                   startIcon={<LogoutOutlined />}
+                  size="small"
                 >
                   logout
                 </Button>
@@ -66,7 +69,7 @@ export const Navbar = () => {
             ) : (
               <>
                 <Button
-                  // variant="outlined"
+                  variant="outlined"
                   sx={{ color: "orange" }}
                   component={RouterLink}
                   to="/login"

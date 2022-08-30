@@ -7,12 +7,14 @@ import {
   Button,
   Grid,
   IconButton,
+  Stack,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { register, reset } from "../features/auth/authSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
 import {
+  AppRegistration,
   MailOutlineOutlined,
   PersonOutlineOutlined,
   PersonRounded,
@@ -75,15 +77,36 @@ export const RegisterPage = () => {
         <Grid container sx={{ justifyContent: "center" }}>
           <Grid item xs={12} md={6}>
             <Paper sx={{ p: 4 }}>
-              <Typography
-                variant="h4"
-                sx={{ color: "#666", fontSize: 29, textAlign: "center", mb: 1 }}
+              <Stack
+                direction="row"
+                spacing={2}
+                sx={{ justifyContent: "center" }}
               >
-                Register
-              </Typography>
+                <AppRegistration
+                  fontSize="large"
+                  sx={{ color: "#666", mb: 4 }}
+                />
+
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: "#666",
+                    textAlign: "center",
+                    mb: 1,
+                    fontSize: 27,
+                  }}
+                >
+                  Register
+                </Typography>
+              </Stack>
               <Typography
-                variant="h4"
-                sx={{ color: "#666", fontSize: 18, textAlign: "center", mb: 4 }}
+                variant="h5"
+                sx={{
+                  color: "#666",
+                  textAlign: "center",
+                  mb: 1,
+                  fontSize: 27,
+                }}
               >
                 Create an account
               </Typography>
@@ -195,6 +218,16 @@ export const RegisterPage = () => {
                   Submit
                 </Button>
               </Box>
+              <Stack direction="row" sx={{ alignItems: "center", mt: 2 }}>
+                <Typography variant="body2">Already have acc.? </Typography>
+                <Button
+                  sx={{ textTransform: "capitalize" }}
+                  component={RouterLink}
+                  to="/login"
+                >
+                  Login
+                </Button>
+              </Stack>
             </Paper>
           </Grid>
         </Grid>
