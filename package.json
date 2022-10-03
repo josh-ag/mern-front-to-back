@@ -8,7 +8,8 @@
     "client": "npm start --prefix client",
     "server": "nodemon backend/server",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "clientBuild": "npm run build --prefix client"
+    "clientBuild": "npm run build --prefix client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Gems",
   "license": "MIT",
@@ -21,6 +22,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.4"
   },
+  "engines": {"node": "18.x","npm":"8.x"},
   "devDependencies": {
     "concurrently": "^7.2.2",
     "nodemon": "^2.0.19"

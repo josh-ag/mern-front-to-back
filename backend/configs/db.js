@@ -2,10 +2,13 @@ const mongoose = require("mongoose");
 
 //@desc - Connect To Mongodb Atlas
 const dbConnection = async () => {
-  const mongoLocal = "mongodb://127.0.0.1:27017/goalsetter";
+  const connString =
+    process.env.NODE_ENV === "production"
+      ? process.env.MONGO_URI
+      : process.env.MONGO_LOCAL;
   let conn;
   try {
-    conn = await mongoose.connect(/*process.env.MONGO_URI*/ mongoLocal);
+    conn = await mongoose.connect(connString);
 
     console.log(
       `connected to MongoDB @${conn.connection.host}`.yellow.underline

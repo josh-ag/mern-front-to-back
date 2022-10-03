@@ -10,8 +10,6 @@ const User = require("../models/userModel");
 const registerUser = asyncHandler(async (req, res, next) => {
   const { firstname, lastname, email, username, password } = req.body;
 
-  console.log(req.body);
-
   if (!firstname || !lastname || !email || !username || !password) {
     return res.status(400).json({ message: "Some fields are missing" });
   }
